@@ -1089,8 +1089,13 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
             var mockHttpContext = new Mock<HttpContext>();
             mockHttpContext.Setup(x => x.Response.RegisterForDispose(It.IsAny<IDisposable>()));
 
-            var controller = new TestPage();
-            controller.PageContext.HttpContext = mockHttpContext.Object;
+            var controller = new TestPage()
+            {
+                PageContext = new PageContext
+                {
+                    HttpContext = mockHttpContext.Object
+                }
+            };
 
             var fileStream = Stream.Null;
 
@@ -1110,8 +1115,13 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
             // Arrange
             var mockHttpContext = new Mock<HttpContext>();
 
-            var controller = new TestPage();
-            controller.PageContext.HttpContext = mockHttpContext.Object;
+            var controller = new TestPage()
+            {
+                PageContext = new PageContext
+                {
+                    HttpContext = mockHttpContext.Object
+                }
+            };
 
             var fileStream = Stream.Null;
 

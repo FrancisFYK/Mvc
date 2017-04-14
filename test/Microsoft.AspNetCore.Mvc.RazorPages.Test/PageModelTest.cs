@@ -100,8 +100,8 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
             var pageModel = new TestPageModel();
 
             // Act & Assert
-            ExceptionAssert.ThrowsArgumentNullOrEmpty(
-                () => pageModel.Redirect(url: url), "url");
+            ExceptionAssert.ThrowsArgument(
+                () => pageModel.Redirect(url: url), "url", "Value cannot be null or empty.");
         }
 
         [Theory]
@@ -1095,8 +1095,13 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
             var mockHttpContext = new Mock<HttpContext>();
             mockHttpContext.Setup(x => x.Response.RegisterForDispose(It.IsAny<IDisposable>()));
 
-            var pageModel = new TestPageModel();
-            pageModel.PageContext.HttpContext = mockHttpContext.Object;
+            var pageModel = new TestPageModel()
+            {
+                PageContext = new PageContext
+                {
+                    HttpContext = mockHttpContext.Object
+                }
+            };
 
             var fileStream = Stream.Null;
 
@@ -1116,8 +1121,13 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
             // Arrange
             var mockHttpContext = new Mock<HttpContext>();
 
-            var pageModel = new TestPageModel();
-            pageModel.PageContext.HttpContext = mockHttpContext.Object;
+            var pageModel = new TestPageModel()
+            {
+                PageContext = new PageContext
+                {
+                    HttpContext = mockHttpContext.Object
+                }
+            };
 
             var fileStream = Stream.Null;
 

@@ -512,7 +512,7 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
         /// </summary>
         /// <param name="url">The URL to redirect to.</param>
         /// <returns>The created <see cref="RedirectResult"/> for the response.</returns>
-        protected internal RedirectResult Redirect(string url) 
+        protected internal RedirectResult Redirect(string url)
             => new RedirectResult(url);
 
         /// <summary>
