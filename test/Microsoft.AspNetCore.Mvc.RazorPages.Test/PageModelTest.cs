@@ -1329,10 +1329,10 @@ namespace Microsoft.AspNetCore.Mvc.RazorPages
         {
             // Arrange
             var statusCode = 205;
-            var statusCodeController = new StatusCodePageModel();
+            var statusCodeModel = new StatusCodePageModel();
 
             // Act
-            var result = statusCodeController.StatusCode_Int(statusCode);
+            var result = statusCodeModel.StatusCode_Int(statusCode);
 
             // Assert
             Assert.Equal(statusCode, result.StatusCode);
